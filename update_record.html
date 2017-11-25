@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update Record</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 class="card-title">Update record</h1>
+
+    <form id="record">
+        <div class="form-group">
+            <label for="date">Record date</label>
+            <input type="text" class="form-control" id="date" placeholder="mm/dd/yyyy">
+        </div>
+
+        <div class="form-group">
+            <label for="hospital">Hospital</label>
+            <input type="text" class="form-control" id="hospital" placeholder="What is your hospital?">
+        </div>
+
+        <div class="form-group">
+            <label for="doctor">Doctor</label>
+            <input type="text" class="form-control" id="doctor" placeholder="Who is your doctor">
+        </div>
+
+        <div class="form-group">
+            <label for="symptoms">Symptoms</label>
+            <textarea class="form-control" id="symptoms" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="diagnosis">Diagnosis</label>
+            <textarea class="form-control" id="diagnosis" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="treatment">Examination Result:</label>
+            <textarea class="form-control" id="treatment" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="record.html" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
+    </form>
+
+    <script>
+        var ridx = window.location.search.split('?')[1];
+        ridx = ridx.substr(ridx.indexOf('=') + 1);
+        ridx = parseInt(ridx);
+        var records = JSON.parse(window.localStorage.getItem('records'));
+
+        $('#date').val(records[ridx]['date']);
+        $('#hospital').val(records[ridx]['hospital']);
+        $('#doctor').val(records[ridx]['doctor']);
+        $('#symptoms').val(records[ridx]['symptoms']);
+        $('#diagnosis').val(records[ridx]['diagnosis']);
+        $('#treatment').val(records[ridx]['treatment']);
+
+        $('#record').submit(function (ev) {
+            ev.preventDefault();
+            records[ridx]['date'] = $('#date').val();
+            records[ridx]['hospital'] = $('#hospital').val();
+            records[ridx]['doctor'] = $('#doctor').val();
+            records[ridx]['symptoms'] = $('#symptoms').val();
+            records[ridx]['diagnosis'] = $('#diagnosis').val();
+            records[ridx]['treatment'] = $('#treatment').val();
+            window.localStorage.setItem('records', JSON.stringify(records));
+            window.location.replace('record.html');
+        });
+
+    </script>
+</body>
+
+</html>

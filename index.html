@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Main</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./index.html">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./record.html">Records
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./appointment.html">Appointments
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <h1 class="card-title">Profile</h1>
+
+    <img src="res/PI_Roadhog_Piggy.png" alt="res/PI_Roadhog_Piggy.png" class="img-thumbnail float-right">
+
+    <p></p>
+    <table>
+        <thead>
+        </thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <td id="name">
+                Mary
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Gender
+            </th>
+            <td id="gender">
+                Female
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Birthday
+            </th>
+            <td id="birthday">
+                1990.01.02
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Blood Type
+            </th>
+            <td id="bloodtype">
+                B
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Allergies
+            </th>
+            <td id="allergies">
+                Asprin
+            </td>
+        </tr>
+    </table>
+
+    <button id="edit_button" type="button" class="btn btn-primary btn-lg btn-block">Edit profile</button>
+
+    <script>
+        var profile = window.localStorage.getItem('profile');
+        if (profile == null) {
+            profile = {};
+            profile['name'] = 'Mary Wang';
+            profile['gender'] = 'Female';
+            profile['birthday'] = '01/01/1990';
+            profile['bloodtype'] = 'AB';
+            profile['allergies'] = 'Asprin, Penicillin';
+            window.localStorage.setItem('profile', JSON.stringify(profile));
+        }
+        else {
+            profile = JSON.parse(profile);
+        }
+
+        console.log(JSON.stringify(profile));
+
+        $('#name').text(profile['name']);
+        $('#gender').text(profile['gender']);
+        $('#birthday').text(profile['birthday']);
+        $('#bloodtype').text(profile['bloodtype']);
+        $('#allergies').text(profile['allergies']);
+
+        $('#edit_button').click(function () {
+            window.location.replace('edit_profile.html');
+        });
+    </script>
+</body>
+
+</html>
