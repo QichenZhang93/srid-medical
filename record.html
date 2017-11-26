@@ -48,7 +48,7 @@
 </header>
 
 <body>
-    <h1 class="card-title">Your records</h1>
+    <h2 class="card-title">Your records</h2>
 
     <div class="list-group" id="records_list">
         <!-- <li class="list-group-item">
@@ -79,12 +79,12 @@
             var prev = "<li class=\"my-list-group\"><div class=\"my-card\"><div class=\"card-block\">";
             var body = "";
             body += "<h4 class=\"card-title\">Date: " + date + "</h4>";
-            body += "<h6 class=\"card-subtitle mb-2\">Doctor: " + doctor + "</h6>";
-            body += "<h6 class=\"card-subtitle mb-2\">Hospital: " + hospital + "</h6>";
-            body += "<p class=\"card-text\">Symptoms: " + symptoms + "</p>";
-            body += "<p class=\"card-text\">Diagnosis: " + diagnosis + "</p>";
-            body += "<p class=\"card-text\">Treatment: " + treatment + "</p>";
-            body += "<a href=\"update_record.html?ridx=" + countRecords + "\" class=\"btn btn-primary\">EDIT</a>";
+            body += "<p class=\"card-text card-bottom\">Doctor: " + doctor + "</p>";
+            body += "<p class=\"card-text card-bottom\">Hospital: " + hospital + "</p>";
+            body += "<p class=\"card-text card-bottom\">Symptoms: " + symptoms + "</p>";
+            body += "<p class=\"card-text card-bottom\">Diagnosis: " + diagnosis + "</p>";
+            body += "<p class=\"card-text card-bottom\">Treatment: " + treatment + "</p>";
+            body += "<a href=\"update_record.html?ridx=" + countRecords + "\" class=\"btn btn-primary edit-button-margin\">EDIT</a>";
             body += "<a href=\"del_record.html?ridx=" + countRecords + "\" class=\"btn btn-danger button-magin\" id=\"del" + countRecords + "\">DELETE</a>";
             var nxt = "</div></div></li></ul>";
             $('#records_list').append(prev + body + nxt);

@@ -15,10 +15,25 @@ body {
 	padding-right: 5px;
 }
 
+.card-bottom {
+	margin-bottom: 3px;
+}
+
 li {
 	list-style: none;
 }
 
 .button-magin {
 	margin-left: 10px;
+	margin-top: 10px;
 }
+
+.edit-button-margin {
+	margin-top: 10px;
+}
+
+.my-img {
+	height: 96px;
+	display: block;
+}
+
