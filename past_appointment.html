@@ -48,8 +48,8 @@
 
 <body>
     <div class="btn-group d-flex" role="group">
-        <button id='Past' class="btn w-100">Past</button>
-        <button id='Upcoming'  class="btn w-100" autofocus="true">Upcoming</button>
+        <button id='Past' class="btn w-100" autofocus="true">Past</button>
+        <button id='Upcoming'  class="btn w-100" >Upcoming</button>
     </div>
 
     <div class="list-group" id="appointments_list">
@@ -67,10 +67,6 @@
             body += "<h4 class=\"card-title\">Date: " + date + "</h4>";
             body += "<p class=\"card-text card-bottom\">Doctor: " + doctor + "</p>";
             body += "<p class=\"card-text card-bottom\">Hospital: " + hospital + "</p>";
-            body += "<p class=\"card-text card-bottom\">permisson: " + permisson + "</p>";
-            body += "<p class=\"card-text card-bottom\">note: " + note + "</p>";
-            body += "<a href=\"update_appointment.html?ridx=" + countRecords + "\" class=\"btn btn-primary edit-button-margin\">UPDATE</a>";
-            body += "<a href=\"del_appointment.html?ridx=" + countRecords + "\" class=\"btn btn-danger button-magin\" id=\"del" + countRecords + "\">CANCEL</a>";
             var nxt = "</div></div></li></ul>";
             $('#appointments_list').append(prev + body + nxt);
             countRecords++;
@@ -85,16 +81,18 @@
     </script>
 
     <script>
-        var records = JSON.parse(window.localStorage.getItem('appointments'));
-        console.log(records);
-        for (var i = 0; i < records.length; ++i) {
             insertRecord(
-                    records[i]['date'],
-                    records[i]['doctor'],
-                    records[i]['hospital'],
-                    records[i]['permisson'],
-                    records[i]['note']);
-        }
+                    '2016.12.25',
+                    'Dr. Elizabeth Zhang',
+                    'Stanford Medical Center');
+            insertRecord(
+                    '2016.11.26',
+                    'Dr. Elizabeth Zhang',
+                    'Stanford Medical Center');
+            insertRecord(
+                    '2016.09.19',
+                    'Dr. Anna',
+                    'Stanford Medical Center');
     </script>
 </body>
 

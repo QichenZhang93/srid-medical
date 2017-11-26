@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update Appointment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 class="card-title">New Appointment</h1>
+
+    <form id="new_record_form">
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="text" class="form-control" id="date" placeholder="mm/dd/yyyy">
+        </div>
+
+        <div class="form-group">
+            <label for="hospital">Hospital</label>
+            <input type="text" class="form-control" id="hospital" placeholder="Which hospital you want to make an appointment with?">
+        </div>
+
+        <div class="form-group">
+            <label for="doctor">Doctor</label>
+            <input type="text" class="form-control" id="doctor" placeholder="Which doctor you want to make an appointment with?">
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" aria-label="..." id="permisson"> Allow doctor to view your medical records?
+        </div>
+
+        <div class="form-group">
+            <label for="note">Additional Note (optional):</label>
+            <textarea class="form-control" id="note" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="record.html" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
+    </form>
+
+
+    <script>
+        var ridx = window.location.search.split('?')[1];
+        ridx = ridx.substr(ridx.indexOf('=') + 1);
+        ridx = parseInt(ridx);
+        var records = JSON.parse(window.localStorage.getItem('appointments'));
+
+        $('#date').val(records[ridx]['date']);
+        $('#hospital').val(records[ridx]['hospital']);
+        $('#doctor').val(records[ridx]['doctor']);
+        $('#permisson')[0].checked = (records[ridx]['permisson']);
+        $('#note').val(records[ridx]['note']);
+
+        $('#new_record_form').submit(function (ev) {
+            ev.preventDefault();
+            records[ridx]['date'] = $('#date').val();
+            records[ridx]['hospital'] = $('#hospital').val();
+            records[ridx]['doctor'] = $('#doctor').val();
+            records[ridx]['permisson'] = $('#permisson')[0].checked;
+            records[ridx]['note'] = $('#note').val();
+            window.localStorage.setItem('appointments', JSON.stringify(records));
+            window.location.replace('appointment.html');
+        });
+    </script>
+</body>
+
+</html>
