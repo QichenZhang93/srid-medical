@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -48,7 +50,7 @@
 <body>
     <h1 class="card-title">Your records</h1>
 
-    <ul class="list-group" id="records_list">
+    <div class="list-group" id="records_list">
         <!-- <li class="list-group-item">
             <div class="card">
                 <div class="card-block">
@@ -63,16 +65,18 @@
                 </div>
             </div>
         </li> -->
-    </ul>
+    </div>
 
-    <button>
-        <a href="new_record.html">Add a medical record</a>
-    </button>
+    
+    <a href="new_record.html">
+        <button class="btn btn-primary btn-lg btn-block">Add a medical record</button>
+    </a>
+    
 
     <script>
         var countRecords = 0;
         function insertRecord(date, doctor, hospital, symptoms, diagnosis, treatment) {
-            var prev = "<li class=\"list-group-item\"><div class=\"card\"><div class=\"card-block\">";
+            var prev = "<li class=\"my-list-group\"><div class=\"my-card\"><div class=\"card-block\">";
             var body = "";
             body += "<h4 class=\"card-title\">Date: " + date + "</h4>";
             body += "<h6 class=\"card-subtitle mb-2\">Doctor: " + doctor + "</h6>";
@@ -80,8 +84,8 @@
             body += "<p class=\"card-text\">Symptoms: " + symptoms + "</p>";
             body += "<p class=\"card-text\">Diagnosis: " + diagnosis + "</p>";
             body += "<p class=\"card-text\">Treatment: " + treatment + "</p>";
-            body += "<a href=\"update_record.html?ridx=" + countRecords + "\" class=\"card-link\">EDIT</a>";
-            body += "<a href=\"del_record.html?ridx=" + countRecords + "\" class=\"card-link\" id=\"del" + countRecords + "\">DELETE</a>";
+            body += "<a href=\"update_record.html?ridx=" + countRecords + "\" class=\"btn btn-primary\">EDIT</a>";
+            body += "<a href=\"del_record.html?ridx=" + countRecords + "\" class=\"btn btn-danger button-magin\" id=\"del" + countRecords + "\">DELETE</a>";
             var nxt = "</div></div></li></ul>";
             $('#records_list').append(prev + body + nxt);
             countRecords++;

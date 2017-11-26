@@ -1,0 +1,24 @@
+body {
+	padding: 20px;
+}
+
+#edit_button {
+	margin-top: 15px;
+}
+
+.my-list-group {
+	margin-bottom: 20px;
+}
+
+.my-card {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+li {
+	list-style: none;
+}
+
+.button-magin {
+	margin-left: 10px;
+}
