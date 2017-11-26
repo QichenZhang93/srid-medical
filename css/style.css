@@ -37,3 +37,14 @@ li {
 	display: block;
 }
 
+.style-item {
+	padding: 18px 0;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.style-box {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid #e6e6e6;
+	border-radius: 10px;
+}
