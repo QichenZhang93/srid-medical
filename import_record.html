@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update Record</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 class="card-title">Update record</h1>
+
+    <br/>
+    <form id="import">
+
+        <div class="dropdown">
+            <select class="selectpicker">
+                <option>OneMedical</option>
+                <option>SHC</option>
+                <option>Test Hospital</option>
+            </select>
+        </div>
+
+        <br/>
+
+        <button type="submit" class="btn btn-primary">Confirm</button>
+        <a href="record.html" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
+    </form>
+
+    <script>
+        var profile = JSON.parse(window.localStorage.getItem('profile'));
+        if (profile == null) {
+            profile = {};
+        }
+
+        $('#import').submit(function (ev) {
+            ev.preventDefault();
+
+            var records = JSON.parse(window.localStorage.getItem('records'));
+            if (records == null) {
+                records = [];
+            }
+
+            var values = {};
+            values['date'] = "11/12/2011";
+            values['hospital'] = "OneMedical";
+            values['doctor'] = "Lin";
+            values['symptoms'] = "Felt cold";
+            values['diagnosis'] = "Got cold";
+            values['treatment'] = "Many pills";
+
+            records.push(values);
+
+            values = {};
+            values['date'] = "11/12/2001";
+            values['hospital'] = "OneMedical";
+            values['doctor'] = "Robert";
+            values['symptoms'] = "Bleeding";
+            values['diagnosis'] = "Car accident";
+            values['treatment'] = "Surgery";
+
+            records.push(values);
+
+            window.localStorage.setItem('records', JSON.stringify(records));
+            window.location.replace('record.html');
+        });
+
+    </script>
+</body>
+
+</html>
