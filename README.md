@@ -1,4 +1,4 @@
-# srid-medical
+# srid-medical project
 High-fidelity prototype of SRID
 
 ## Technology Stack
