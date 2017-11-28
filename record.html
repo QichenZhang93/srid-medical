@@ -12,7 +12,7 @@
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Records</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -74,7 +74,7 @@
             body += "<p class=\"card-text card-bottom\">Symptoms: " + symptoms + "</p>";
             body += "<p class=\"card-text card-bottom\">Diagnosis: " + diagnosis + "</p>";
             body += "<p class=\"card-text card-bottom\">Treatment: " + treatment + "</p>";
-            body += "<a href=\"update_record.html?ridx=" + countRecords + "\" class=\"btn btn-primary edit-button-margin\">EDIT</a>";
+            body += "<a href=\"update_record.html?ridx=" + countRecords + "\" class=\"btn btn-primary edit-button-margin\">Update</a>";
             body += "<a href=\"del_record.html?ridx=" + countRecords + "\" class=\"btn btn-danger button-magin\" id=\"del" + countRecords + "\">DELETE</a>";
             var nxt = "</div></div></li></ul>";
             $('#records_list').append(prev + body + nxt);

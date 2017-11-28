@@ -23,7 +23,7 @@
     <form id="new_record_form">
         <div class="form-group">
             <label for="date">Record date</label>
-            <input type="text" class="form-control" id="date" placeholder="mm/dd/yyyy">
+            <input type="date" class="form-control" id="date" placeholder="mm/dd/yyyy">
         </div>
 
         <div class="form-group">
@@ -60,18 +60,47 @@
             ev.preventDefault();
             var values = {};
             values['date'] = $('#date').val();
+            if (values['date'].length == 0) {
+                alert('Please provide date!');
+                return;
+            }
             values['hospital'] = $('#hospital').val();
+            if (values['date'].length == 0) {
+                alert('Please provide hospital!');
+                return;
+            }
             values['doctor'] = $('#doctor').val();
+            if (values['date'].length == 0) {
+                alert('Please provide doctor!');
+                return;
+            }
             values['symptoms'] = $('#symptoms').val();
+            if (values['date'].length == 0) {
+                alert('Please provide symptoms!');
+                return;
+            }
             values['diagnosis'] = $('#diagnosis').val();
+            if (values['date'].length == 0) {
+                alert('Please provide diagnosis!');
+                return;
+            }
             values['treatment'] = $('#treatment').val();
+            if (values['date'].length == 0) {
+                alert('Please provide treatment!');
+                return;
+            }
             var records = JSON.parse(window.localStorage.getItem('records'));
             if (records == null) {
                 records = [];
             }
             records.push(values);
             console.log('add record ' + JSON.stringify(records));
+            console.log("sorting ...");
+            records.sort(function (a, b) {
+                return b['date'].localeCompare(a['date']);
+            });
             window.localStorage.setItem('records', JSON.stringify(records));
+            alert("You have successfully added this record!")
             window.location.replace('record.html');
         });
     </script>
