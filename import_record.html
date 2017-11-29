@@ -24,7 +24,7 @@
     <form id="import">
 
         <div class="dropdown">
-            <select class="selectpicker">
+            <select class="selectpicker" id="hospital">
                 <option>OneMedical</option>
                 <option>SHC</option>
                 <option>GoodHospital</option>
@@ -51,25 +51,44 @@
                 records = [];
             }
 
-            var values = {};
-            values['date'] = "11/12/2011";
-            values['hospital'] = "OneMedical";
-            values['doctor'] = "Lin";
-            values['symptoms'] = "Felt cold";
-            values['diagnosis'] = "Got cold";
-            values['treatment'] = "Many pills";
+            var hospital = $('#hospital').val();
 
-            records.push(values);
+            if (hospital == 'OneMedical') {
+                var values = {};
+                values['date'] = "2011-11-12";
+                values['hospital'] = "OneMedical";
+                values['doctor'] = "Lin";
+                values['symptoms'] = "Felt cold";
+                values['diagnosis'] = "Got cold";
+                values['treatment'] = "Many pills";
 
-            values = {};
-            values['date'] = "11/12/2001";
-            values['hospital'] = "OneMedical";
-            values['doctor'] = "Robert";
-            values['symptoms'] = "Bleeding";
-            values['diagnosis'] = "Car accident";
-            values['treatment'] = "Surgery";
+                records.push(values);
 
-            records.push(values);
+                values = {};
+                values['date'] = "2001-11-12";
+                values['hospital'] = "OneMedical";
+                values['doctor'] = "Robert";
+                values['symptoms'] = "Bleeding";
+                values['diagnosis'] = "Car accident";
+                values['treatment'] = "Surgery";
+
+                records.push(values);
+            }
+            else if (hospital == 'GoodHospital') {
+                var values = {};
+                values['date'] = "2017-11-29";
+                values['hospital'] = "GoodHospital";
+                values['doctor'] = "Qichen";
+                values['symptoms'] = "Vomit\nStomachache";
+                values['diagnosis'] = "Bacterial infectious diarrhea";
+                values['treatment'] = "XXX pills, 3 times a day, 1 pill per time\n";
+
+                records.push(values);
+            }
+
+            records.sort(function (a, b) {
+                return b['date'].localeCompare(a['date']);
+            });
 
             window.localStorage.setItem('records', JSON.stringify(records));
             window.location.replace('record.html');
